@@ -23,7 +23,7 @@ export default function MangaInfo() {
         </div>
         <div>
           <Link to="/manga">
-            {favItems.find((el) => el.id === id) ? (
+            {favItems.find((el) => el.id === id && el.title === title) ? (
               <button
                 className="bg-transparent py-2 px-4 font-semibold border hover:scale-105 hover:border-2 transition ease-out rounded"
                 onClick={() => removeFromFav(state.id, state.title)}

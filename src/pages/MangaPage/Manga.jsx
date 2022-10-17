@@ -1,6 +1,6 @@
 import MangaCard from "../../components/MangaCard/MangaCard";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Loader from "../../components/scroll/Loader";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { createGlobalStyle } from "styled-components";
@@ -27,6 +27,7 @@ function Manga() {
   let naziv = "";
   let pomeraj = 0;
   const navigate = useNavigate();
+  const { state } = useLocation()
 
   async function getManga() {
     let res;
@@ -55,6 +56,10 @@ function Manga() {
   }
 
   useEffect(() => {
+    if (state) {
+      setCategory(state.category);
+      kategorija = state.category;
+    }
     getManga();
   }, []);
 
@@ -86,7 +91,7 @@ function Manga() {
           <option value="adventure">Adventure</option>
           <option value="action">Action</option>
           <option value="fantasy">Fantasy</option>
-          <option value="crime">Crmie</option>
+          <option value="crime">Crime</option>
           <option value="drama">Drama</option>
           <option value="romance">Romance</option>
           <option value="supernatural">Supernatural</option>
@@ -156,6 +161,7 @@ function Manga() {
                     image: manga.attributes.posterImage.small,
                     title: manga.attributes.canonicalTitle,
                     description: manga.attributes.description,
+                    type: manga.type,
                   },
                 });
               }}

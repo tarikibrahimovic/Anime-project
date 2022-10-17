@@ -53,8 +53,7 @@ function Anime() {
 
     const data = await res.json();
     setAnimes((prevValue) => 
-      [...prevValue, ...data.data],
-      console.log(data.data));
+      [...prevValue, ...data.data]);
   }
 
   useEffect(() => {
@@ -94,7 +93,7 @@ function Anime() {
           <option value="adventure">Adventure</option>
           <option value="action">Action</option>
           <option value="fantasy">Fantasy</option>
-          <option value="crime">Crmie</option>
+          <option value="crime">Crime</option>
           <option value="drama">Drama</option>
           <option value="romance">Romance</option>
           <option value="supernatural">Supernatural</option>
@@ -165,6 +164,7 @@ function Anime() {
                     image: anime.attributes.posterImage.small,
                     title: anime.attributes.canonicalTitle,
                     description: anime.attributes.description,
+                    type: anime.type,
                   },
                 });
               }}

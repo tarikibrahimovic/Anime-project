@@ -35,4 +35,3 @@ function FavoritesContextProvider({ children }) {
 export { FavoritesContextProvider, FavoritesList }
 
 
-
